@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:laza_e_commerce/Features/new_password/presentation/view/new_password_screen.dart';
 
 import '../../../sign_up_screen/presentation/view/widget/custom_button.dart';
 
@@ -53,7 +54,9 @@ class VerificationCodeScreen extends StatelessWidget {
                 textAlign:TextAlign.center ,style: TextStyle(
                     fontSize: 13, fontWeight: FontWeight.w500),),
               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-              CustomButton(text: "Confirm Code", onPressed: (){},height: 64,width: double.infinity, color: const Color(0xff9775FA),),
+              CustomButton(text: "Confirm Code", onPressed: (){
+                Navigator.pushNamed(context, NewPasswordScreen.routeName);
+              },height: 64,width: double.infinity, color: const Color(0xff9775FA),),
             ],
           ),
         ),
