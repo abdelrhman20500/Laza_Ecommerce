@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/sign_up_screen.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/custom_text_filed.dart';
 
@@ -41,7 +42,10 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: MediaQuery.of(context).size.height*0.03,),
               Align(
                 alignment: Alignment.topRight,
-                child: TextButton(onPressed: (){}, child: const Text("forget password ?",style: TextStyle(
+                child: TextButton(onPressed: ()
+                {
+                  Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
+                }, child: const Text("forget password ?",style: TextStyle(
                   fontSize: 17, fontWeight: FontWeight.w400, color: Colors.red),),),
               ),
               RowOption(title: "Remember me", switchValue: isSwitch, onChanged: (newSwitch)

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/custom_button.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/custom_text_filed.dart';
+import 'package:laza_e_commerce/Features/verification_code/presentation/view/verification_code_screen.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -29,7 +30,11 @@ class ForgetPasswordScreen extends StatelessWidget {
                 textAlign:TextAlign.center ,style: TextStyle(
                 fontSize: 13, fontWeight: FontWeight.w400),),
               SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-              CustomButton(text: "Confirm Mail", onPressed: (){},height: 64,width: double.infinity, color: const Color(0xff9775FA),),
+              CustomButton(text: "Confirm Mail", onPressed: ()
+              {
+                Navigator.pushNamed(context, VerificationCodeScreen.routeName);
+              },
+                height: 64,width: double.infinity, color: const Color(0xff9775FA),),
             ],
           ),
         ),
