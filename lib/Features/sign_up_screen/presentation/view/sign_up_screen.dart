@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/login_screen/presentation/view/login_screen.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/custom_button.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/custom_text_filed.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/row_option.dart';
 
 class SignUpScreen extends StatefulWidget {
-    SignUpScreen({super.key});
+    const SignUpScreen({super.key});
 
   static const String routeName= "SignUpScreen";
 
@@ -20,7 +21,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
    @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: const Icon(Icons.arrow_back)),
+      ),
       body:  Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -42,7 +47,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   });
               }),
               SizedBox(height: MediaQuery.of(context).size.height*0.1,),
-              CustomButton(text: "Sign Up", onPressed: (){}, height: 64,width: double.infinity,color: const Color(0xff9775FA),)
+              CustomButton(text: "Sign Up", onPressed: (){}, height: 64,width: double.infinity,color: const Color(0xff9775FA),),
+              SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("You already have an account ?  ", style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w400),),
+                  InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context, LoginScreen.routeName);
+                      },
+                      child: const Text("Login", style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w500),))
+
+                ],
+              )
+
+
             ],
           ),
         ),

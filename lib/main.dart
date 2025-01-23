@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/login_screen/presentation/view/login_screen.dart';
 import 'package:laza_e_commerce/Features/login_social/presentation/view/login_social.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/sign_up_screen.dart';
 import 'package:laza_e_commerce/Features/welcome_screen/presentation/view/welcome_screen.dart';
@@ -19,10 +20,10 @@ class MyApp extends StatelessWidget {
         SplashScreen.routeName:(_)=>const SplashScreen(),
         WelcomeScreen.routeName:(_)=>const WelcomeScreen(),
         LoginSocial.routeName:(_)=>const LoginSocial(),
-        SignUpScreen.routeName:(_)=>SignUpScreen()
+        SignUpScreen.routeName:(_)=>SignUpScreen(),
+        LoginScreen.routeName:(_)=>LoginScreen(),
       },
-      initialRoute: SignUpScreen.routeName,
-      home: const WelcomeScreen(),
+      initialRoute: SplashScreen.routeName,
     );
   }
 }

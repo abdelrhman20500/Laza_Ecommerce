@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/login_social/presentation/view/login_social.dart';
 
 class BuildManOrWoman extends StatelessWidget {
   const BuildManOrWoman({super.key,});
@@ -42,7 +43,9 @@ class BuildManOrWoman extends StatelessWidget {
                 )
               ],
             ),
-            TextButton(onPressed: (){}, child: const Text("Skip", style: TextStyle(
+            TextButton(onPressed: (){
+              Navigator.pushNamed(context, LoginSocial.routeName);
+            }, child: const Text("Skip", style: TextStyle(
                 fontSize: 22, fontWeight: FontWeight.w600
             ),))
           ],
