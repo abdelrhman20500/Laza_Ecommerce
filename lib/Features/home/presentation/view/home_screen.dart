@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/cart_tab/cart_tab.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/fav_tab/fav_tab.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/home_tab.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/order_tab/order_tab.dart';
 
 import 'widget/build_drawer.dart';
 
@@ -13,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
    int currentIndex=0;
+   List<Widget> tabs= [
+     const HomeTab(),
+     const FavTab(),
+     const CartTab(),
+     const OrderTab(),
+   ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: const BuildDrawer(),
+      body: tabs[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: const Color(0xff9775FA),
           unselectedItemColor: Colors.grey,
@@ -34,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
           items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: "Favorite"),
-        BottomNavigationBarItem(icon: Icon(Icons.card_giftcard), label: "Card"),
-        BottomNavigationBarItem(icon: Icon(Icons.add_chart_sharp), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: "Cart"),
+        BottomNavigationBarItem(icon: Icon(Icons.wallet_outlined), label: "Orders"),
       ]),
     );
   }
