@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laza_e_commerce/Features/forget_password/presentation/view/forget_password_screen.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/home_screen.dart';
 import 'package:laza_e_commerce/Features/login_screen/presentation/view/login_screen.dart';
 import 'package:laza_e_commerce/Features/login_social/presentation/view/login_social.dart';
 import 'package:laza_e_commerce/Features/new_password/presentation/view/new_password_screen.dart';
@@ -29,8 +30,9 @@ class MyApp extends StatelessWidget {
         ForgetPasswordScreen.routeName:(_)=>const ForgetPasswordScreen(),
         VerificationCodeScreen.routeName:(_)=>const VerificationCodeScreen(),
         NewPasswordScreen.routeName:(_)=>const NewPasswordScreen(),
+        HomeScreen.routeName:(_)=>const HomeScreen(),
       },
-      initialRoute: SplashScreen.routeName,
+      initialRoute: HomeScreen.routeName,
     );
   }
 }
