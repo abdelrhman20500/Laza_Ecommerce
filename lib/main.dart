@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         NewPasswordScreen.routeName:(_)=>const NewPasswordScreen(),
         HomeScreen.routeName:(_)=>const HomeScreen(),
       },
-      initialRoute: HomeScreen.routeName,
+      initialRoute: LoginScreen.routeName,
     );
   }
 }
