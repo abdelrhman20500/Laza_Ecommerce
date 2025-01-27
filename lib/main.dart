@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         NewPasswordScreen.routeName:(_)=> NewPasswordScreen(),
         HomeScreen.routeName:(_)=>const HomeScreen(),
       },
-      initialRoute: ForgetPasswordScreen.routeName,
+      initialRoute: NewPasswordScreen.routeName,
     );
   }
 }
