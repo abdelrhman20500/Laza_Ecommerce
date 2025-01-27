@@ -4,9 +4,10 @@ import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget
 import 'package:laza_e_commerce/Features/verification_code/presentation/view/verification_code_screen.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
-  const ForgetPasswordScreen({super.key});
+   ForgetPasswordScreen({super.key});
   static const String routeName ="ForgetPasswordScreen";
 
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               const Text("Forgot Password", style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),),
               const Image(image: AssetImage("assets/images/forget_password.png"), fit: BoxFit.fill,),
               SizedBox(height: MediaQuery.of(context).size.height*0.15,),
-              const CustomTextField(labelText: "Email Address",prefixIcon: Icons.email_outlined, type: TextInputType.emailAddress,),
+              CustomTextField(labelText: "Email Address",prefixIcon: Icons.email_outlined,controller:passwordController , type: TextInputType.emailAddress,),
               SizedBox(height: MediaQuery.of(context).size.height*0.15,),
               const Text("Please write your email to receive a\n confirmation code to set a new password.",
                 textAlign:TextAlign.center ,style: TextStyle(

@@ -27,12 +27,12 @@ class MyApp extends StatelessWidget {
         LoginSocial.routeName:(_)=>const LoginSocial(),
         SignUpScreen.routeName:(_)=>const SignUpScreen(),
         LoginScreen.routeName:(_)=>const LoginScreen(),
-        ForgetPasswordScreen.routeName:(_)=>const ForgetPasswordScreen(),
+        ForgetPasswordScreen.routeName:(_)=> ForgetPasswordScreen(),
         VerificationCodeScreen.routeName:(_)=>const VerificationCodeScreen(),
-        NewPasswordScreen.routeName:(_)=>const NewPasswordScreen(),
+        NewPasswordScreen.routeName:(_)=> NewPasswordScreen(),
         HomeScreen.routeName:(_)=>const HomeScreen(),
       },
-      initialRoute: LoginScreen.routeName,
+      initialRoute: SignUpScreen.routeName,
     );
   }
 }
