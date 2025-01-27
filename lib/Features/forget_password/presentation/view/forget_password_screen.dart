@@ -11,6 +11,7 @@ import 'package:laza_e_commerce/Features/forget_password/presentation/view-manag
 import 'package:laza_e_commerce/Features/forget_password/presentation/view-manager/reset_password_state.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/custom_button.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/widget/custom_text_filed.dart';
+import 'package:laza_e_commerce/Features/verification_code/presentation/view/verification_code_screen.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
    ForgetPasswordScreen({super.key});
@@ -41,6 +42,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                   {
                     closeLoadingDialog(context);
                     showSuccessDialog(context, state.resetPassword.message.toString());
+                    Navigator.pushNamed(context, VerificationCodeScreen.routeName,
+                    arguments: emailController.text);
                   }
           },
           builder: (context, state){
