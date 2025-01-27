@@ -41,6 +41,7 @@ class VerificationCodeScreen extends StatelessWidget {
                   print(state.verificationCode.message);
                   closeLoadingDialog(context);
                   showSuccessDialog(context, state.verificationCode.message.toString());
+                  Navigator.pushNamed(context, NewPasswordScreen.routeName,arguments: email);
                 }else if(state is VerificationCodeFailure)
                 {
                   showErrorDialog(context,state.errMessage);
