@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/cart_tab/cart_tab.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/fav_tab/fav_tab.dart';
-import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/view/home_tab.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/order_tab/order_tab.dart';
 
+import 'home_tab/presentation/view/home_tab.dart';
 import 'widget/build_drawer.dart';
 
 class HomeScreen extends StatefulWidget {

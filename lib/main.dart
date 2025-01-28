@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:laza_e_commerce/Features/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_screen.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/domain/entities/product_entity.dart';
@@ -16,6 +16,7 @@ import 'Features/splash_screen/presentation/view/splash_screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPref.init();
+  await Hive.initFlutter();
   Hive.registerAdapter(ProductEntityAdapter());
   Hive.openBox(kFeaturedBox);
   runApp(const MyApp());
