@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:laza_e_commerce/Features/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_screen.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/domain/entities/product_entity.dart';
 import 'package:laza_e_commerce/Features/login_screen/presentation/view/login_screen.dart';
 import 'package:laza_e_commerce/Features/login_social/presentation/view/login_social.dart';
 import 'package:laza_e_commerce/Features/new_password/presentation/view/new_password_screen.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/sign_up_screen.dart';
 import 'package:laza_e_commerce/Features/verification_code/presentation/view/verification_code_screen.dart';
 import 'package:laza_e_commerce/Features/welcome_screen/presentation/view/welcome_screen.dart';
+import 'package:laza_e_commerce/constant.dart';
 import 'Core/utils/shared_preferences.dart';
 import 'Features/splash_screen/presentation/view/splash_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPref.init();
+  Hive.registerAdapter(ProductEntityAdapter());
+  Hive.openBox(kFeaturedBox);
   runApp(const MyApp());
 }
 

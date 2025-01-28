@@ -10,7 +10,7 @@ class ProductUseCase extends UseCase<List<ProductEntity>, NoParam>{
   ProductUseCase(this.productRepo);
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> call([void param]) async{
+  Future<Either<Failure, List<ProductEntity>>> call([NoParam? param]) async{
     return await productRepo.fetchProduct();
   }
 }
