@@ -73,15 +73,6 @@ class VerificationCodeScreen extends StatelessWidget {
                             verificationCode,
                             email,
                         );
-                        // showDialog(
-                        //     context: context,
-                        //     builder: (context){
-                        //       return AlertDialog(
-                        //         title: const Text("Verification Code"),
-                        //         content: Text('Code entered is $verificationCode'),
-                        //       );
-                        //     }
-                        // );
                       }, // end onSubmit
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height*0.15,),

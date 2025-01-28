@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'build_home_product.dart';
 
 class GridViewHomeProduct extends StatelessWidget {
@@ -14,7 +13,7 @@ class GridViewHomeProduct extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 8.0,
-        childAspectRatio: 2.2 / 3,
+        childAspectRatio: 2.15 / 3,
       ),
       itemCount: 6, // Adjust the item count as needed
       itemBuilder: (context, index) {

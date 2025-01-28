@@ -7,9 +7,12 @@ import 'package:laza_e_commerce/Features/new_password/presentation/view/new_pass
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/sign_up_screen.dart';
 import 'package:laza_e_commerce/Features/verification_code/presentation/view/verification_code_screen.dart';
 import 'package:laza_e_commerce/Features/welcome_screen/presentation/view/welcome_screen.dart';
+import 'Core/utils/shared_preferences.dart';
 import 'Features/splash_screen/presentation/view/splash_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPref.init();
   runApp(const MyApp());
 }
 
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
         NewPasswordScreen.routeName:(_)=> NewPasswordScreen(),
         HomeScreen.routeName:(_)=>const HomeScreen(),
       },
-      initialRoute: ForgetPasswordScreen.routeName,
+      initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
     );
   }
 }
