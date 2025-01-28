@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:laza_e_commerce/Features/forget_password/presentation/view/forget_password_screen.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_screen.dart';
@@ -11,6 +12,7 @@ import 'package:laza_e_commerce/Features/verification_code/presentation/view/ver
 import 'package:laza_e_commerce/Features/welcome_screen/presentation/view/welcome_screen.dart';
 import 'package:laza_e_commerce/constant.dart';
 import 'Core/utils/shared_preferences.dart';
+import 'Core/utils/simple_bloc_observer.dart';
 import 'Features/splash_screen/presentation/view/splash_screen.dart';
 
 void main() async{
@@ -18,7 +20,8 @@ void main() async{
   await SharedPref.init();
   await Hive.initFlutter();
   Hive.registerAdapter(ProductEntityAdapter());
-  Hive.openBox(kFeaturedBox);
+  await Hive.openBox<ProductEntity>(kFeaturedBox);
+  Bloc.observer= SimpleBlocObserver();
   runApp(const MyApp());
 }
 

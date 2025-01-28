@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class BuildHomeProduct extends StatelessWidget {
   const BuildHomeProduct({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,6 +43,12 @@ class BuildHomeProduct extends StatelessWidget {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
             const Text("Nike Sportswear Club Fleece",
+              style: TextStyle(fontWeight: FontWeight.w500,),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+            const Text("Nike Sportswear Club Fleece Nike Sportswear Club Fleece Nike Sportswear Club Fleece",
               style: TextStyle(fontWeight: FontWeight.w500,),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,

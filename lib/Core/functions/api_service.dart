@@ -17,7 +17,7 @@ class ApiService{
   }
 
 
-  Future<Response> get({required String endpoint ,String? token}) async {
+  Future<List<dynamic>> get({required String endpoint ,String? token}) async {
     var response = await dio.get("$baseUrl$endpoint");
     return response.data;
   }

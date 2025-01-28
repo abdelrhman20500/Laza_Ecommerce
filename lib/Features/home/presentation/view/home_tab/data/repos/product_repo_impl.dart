@@ -10,7 +10,9 @@ class ProductRepoImpl extends ProductRepo{
   final ProductRemoteDateSource productRemoteDateSource;
   final ProductLocalDataSource productLocalDataSource;
 
-  ProductRepoImpl(this.productRemoteDateSource, this.productLocalDataSource);
+  ProductRepoImpl({required this.productRemoteDateSource, required this.productLocalDataSource});
+
+
   @override
   Future<Either<Failure, List<ProductEntity>>> fetchProduct()async{
     try {

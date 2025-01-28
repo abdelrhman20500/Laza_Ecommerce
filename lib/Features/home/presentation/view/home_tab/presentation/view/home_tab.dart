@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view/widget/bloc_consumer_home_product.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view/widget/build_home_search.dart';
-import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view/widget/grid_view_home_product.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view/widget/list_view_home_category.dart';
 
 
@@ -33,13 +33,14 @@ class HomeTab extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height*0.001,),
             const ListViewHomeCategory(),
             SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-            const GridViewHomeProduct(),
+            const BlocConsumerHomeProduct(),
           ],
         ),
       ),
     );
   }
 }
+
 
 
 

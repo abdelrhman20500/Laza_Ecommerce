@@ -5,11 +5,11 @@ import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/data/mo
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/domain/entities/product_entity.dart';
 import 'package:laza_e_commerce/constant.dart';
 
-abstract class ProductRemoteDateSource{
+abstract class ProductRemoteDateSource {
   Future<List<ProductEntity>> fetchFeaturedProduct();
 }
 
-class ProductRemoteDateSourceImpl extends ProductRemoteDateSource{
+class ProductRemoteDateSourceImpl extends ProductRemoteDateSource {
   final ApiService apiService;
 
   ProductRemoteDateSourceImpl(this.apiService);
@@ -22,11 +22,16 @@ class ProductRemoteDateSourceImpl extends ProductRemoteDateSource{
     if (box.isNotEmpty) {
       return box.values.toList();
     }
-    Response<dynamic> response = await apiService.get(endpoint: "/api/Product/GetAllProducts");
-    List<dynamic> data = response.data;
-    List<ProductEntity> products = getProductsList(data);
+
+    var response = await apiService.get(endpoint: "/api/Product/GetAllProducts");
+    List<ProductEntity> products = getProductsList(response);
+
     // Cache Featured Product
-    await box.putAll({ for (var v in products) v.id : v });
+    await box.putAll({
+      for (var v in products)
+        if (v.id != null) v.id! : v, // Ensure id is not null and cast to String
+    });
+
     return products;
   }
 
