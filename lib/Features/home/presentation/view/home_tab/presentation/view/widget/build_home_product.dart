@@ -1,8 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class BuildHomeProduct extends StatelessWidget {
-  const BuildHomeProduct({super.key});
+  const BuildHomeProduct({super.key, required this.image, required this.name, required this.description, required this.price});
 
+  final String image;
+  final String name;
+  final String description;
+  final String price;
+  final String baseUrl = 'https://laza.runasp.net/';
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +31,10 @@ class BuildHomeProduct extends StatelessWidget {
           children: [
             Stack(
               children: [
-                const AspectRatio(
+                AspectRatio(
                   aspectRatio: 1.1,
-                  child: Image(
-                    image: AssetImage("assets/images/shirt.png"),
+                  child:CachedNetworkImage(
+                    imageUrl: "$baseUrl$image",
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -42,19 +48,19 @@ class BuildHomeProduct extends StatelessWidget {
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-            const Text("Nike Sportswear Club Fleece",
-              style: TextStyle(fontWeight: FontWeight.w500,),
+            Text(name,
+              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w500,),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-            const Text("Nike Sportswear Club Fleece Nike Sportswear Club Fleece Nike Sportswear Club Fleece",
-              style: TextStyle(fontWeight: FontWeight.w500,),
+            Text(description,
+              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w500,),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-            const Text("\$ 99", style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,),
+             Text("\$$price", style: const TextStyle(color:Colors.black,fontSize: 18,fontWeight: FontWeight.w600,),
             ),
           ],
         ),

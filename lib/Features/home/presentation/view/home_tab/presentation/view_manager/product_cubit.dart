@@ -3,9 +3,10 @@ import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/domain/
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view_manager/product_state.dart';
 
 class FeaturedProductsCubit extends Cubit<ProductState> {
-  FeaturedProductsCubit(this.productUseCase): super(ProductInitial());
+  FeaturedProductsCubit(this.productUseCase) : super(ProductInitial());
 
   final ProductUseCase productUseCase;
+
   Future<void> fetchFeaturedProducts() async {
     emit(ProductLoading());
     var result = await productUseCase.call();

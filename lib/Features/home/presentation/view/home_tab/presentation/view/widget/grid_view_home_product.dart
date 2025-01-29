@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/domain/entities/product_entity.dart';
 import 'build_home_product.dart';
 
 class GridViewHomeProduct extends StatelessWidget {
-  const GridViewHomeProduct({super.key,});
+  const GridViewHomeProduct({super.key, required this.model});
 
+  final List<ProductEntity> model;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,14 @@ class GridViewHomeProduct extends StatelessWidget {
         mainAxisSpacing: 8.0,
         childAspectRatio: 2.1 / 3.7,
       ),
-      itemCount: 6, // Adjust the item count as needed
+      itemCount: model.length,
       itemBuilder: (context, index) {
-        return const BuildHomeProduct();
+        return BuildHomeProduct(
+          image: model[index].image ?? "",
+          name: model[index].name ?? "",
+          description: model[index].description ?? "",
+          price: model[index].price?.toString() ?? "0.0", // Ensure to convert price to String
+        );
       },
     );
   }

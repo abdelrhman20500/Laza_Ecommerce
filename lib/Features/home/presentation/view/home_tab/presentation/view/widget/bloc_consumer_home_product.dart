@@ -8,13 +8,10 @@ import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/data/re
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/domain/use_cases/product_use_case.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view_manager/product_cubit.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view_manager/product_state.dart';
-
 import 'grid_view_home_product.dart';
 
 class BlocConsumerHomeProduct extends StatelessWidget {
-  const BlocConsumerHomeProduct({
-    super.key,
-  });
+  const BlocConsumerHomeProduct({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,25 +19,19 @@ class BlocConsumerHomeProduct extends StatelessWidget {
       create: (context) => FeaturedProductsCubit(
         ProductUseCase(
           ProductRepoImpl(
-            productRemoteDateSource:
-                ProductRemoteDateSourceImpl(ApiService(Dio())),
+            productRemoteDateSource: ProductRemoteDateSourceImpl(ApiService(Dio())),
             productLocalDataSource: ProductLocalDataSourceImpl(),
           ),
         ),
       )..fetchFeaturedProducts(),
-      child: BlocConsumer<FeaturedProductsCubit, ProductState>(
-        listener: (context, state) {
-          if (state is ProductFailure) {
-            print(state.errMessage);
-            Text(state.errMessage);
-          } else if (state is ProductSuccess) {
-            // Text(state.product[0].description.toString());
-          } else if (state is ProductLoading) {
-            const Center(child: CircularProgressIndicator());
-          }
-        },
+      child: BlocBuilder<FeaturedProductsCubit, ProductState>(
         builder: (context, state) {
-          return const GridViewHomeProduct();
+          if (state is ProductFailure) {
+            return Center(child: Text(state.errMessage));
+          } else if (state is ProductSuccess) {
+            return GridViewHomeProduct(model: state.product);
+          }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

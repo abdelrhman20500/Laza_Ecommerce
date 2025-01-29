@@ -1,31 +1,26 @@
 import '../../domain/entities/product_entity.dart';
 
 class ProductModel extends ProductEntity {
-  String? id;
-  String? name;
-  double? price;
-  String? description;
   String? categoryId;
-  String? img;
   List<Images>? images;
   List<dynamic>? reviews;
 
-  // تأكد من تمرير جميع المعلمات المطلوبة إلى super
+  // Constructor
   ProductModel({
-    this.id,
-    this.name,
-    this.price,
-    this.description,
+    required String id,
+    required String name,
+    required double price,
+    required String description,
+    required String img,
     this.categoryId,
-    this.img,
     this.images,
     this.reviews,
   }) : super(
-    id: id ?? '', // تمرير قيمة افتراضية إذا كانت null
-    image: img ?? '', // تمرير قيمة افتراضية إذا كانت null
-    name: name ?? '', // تمرير قيمة افتراضية إذا كانت null
-    description: description ?? '', // تمرير قيمة افتراضية إذا كانت null
-    price: price ?? 0.0, // تمرير قيمة افتراضية إذا كانت null
+    id: id,
+    image: img,
+    name: name,
+    description: description,
+    price: price,
   );
 
   ProductModel.fromJson(Map<String, dynamic> json) : super(
@@ -35,17 +30,11 @@ class ProductModel extends ProductEntity {
     description: json["Description"] is String ? json["Description"] : '',
     price: json["Price"] is num ? (json["Price"] as num).toDouble() : 0.0,
   ) {
-    if (json["CategoryId"] is String) {
-      categoryId = json["CategoryId"];
-    }
-    if (json["Images"] is List) {
-      images = json["Images"] == null
-          ? null
-          : (json["Images"] as List).map((e) => Images.fromJson(e)).toList();
-    }
-    if (json["Reviews"] is List) {
-      reviews = json["Reviews"] ?? [];
-    }
+    categoryId = json["CategoryId"] as String?;
+    images = json["Images"] == null
+        ? []
+        : (json["Images"] as List).map((e) => Images.fromJson(e)).toList();
+    reviews = json["Reviews"] ?? [];
   }
 
   Map<String, dynamic> toJson() {
@@ -55,11 +44,11 @@ class ProductModel extends ProductEntity {
     data["Price"] = price;
     data["Description"] = description;
     data["CategoryId"] = categoryId;
-    data["Img"] = img;
-    if (images != null) {
-      data["Images"] = images?.map((e) => e.toJson()).toList();
+    data["Img"] = image;
+    if (images != null && images!.isNotEmpty) {
+      data["Images"] = images!.map((e) => e.toJson()).toList();
     }
-    if (reviews != null) {
+    if (reviews != null && reviews!.isNotEmpty) {
       data["Reviews"] = reviews;
     }
     return data;
@@ -72,9 +61,7 @@ class Images {
   Images({this.image});
 
   Images.fromJson(Map<String, dynamic> json) {
-    if (json["Image"] is String) {
-      image = json["Image"];
-    }
+    image = json["Image"];
   }
 
   Map<String, dynamic> toJson() {

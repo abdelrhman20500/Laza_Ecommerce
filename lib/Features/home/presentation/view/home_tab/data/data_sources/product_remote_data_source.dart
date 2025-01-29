@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 import 'package:laza_e_commerce/Core/functions/api_service.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/data/models/product_model.dart';
@@ -23,8 +22,11 @@ class ProductRemoteDateSourceImpl extends ProductRemoteDateSource {
       return box.values.toList();
     }
 
+    // Fetch from API
     var response = await apiService.get(endpoint: "/api/Product/GetAllProducts");
-    List<ProductEntity> products = getProductsList(response);
+
+    List<dynamic> data = response; // Extract the data
+    List<ProductEntity> products = getProductsList(data);
 
     // Cache Featured Product
     await box.putAll({
