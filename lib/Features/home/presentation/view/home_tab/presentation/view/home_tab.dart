@@ -31,7 +31,7 @@ class HomeTab extends StatelessWidget {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height*0.001,),
-            const ListViewHomeCategory(),
+            ListViewHomeCategory(),
             SizedBox(height: MediaQuery.of(context).size.height*0.01,),
             const BlocConsumerHomeProduct(),
           ],
