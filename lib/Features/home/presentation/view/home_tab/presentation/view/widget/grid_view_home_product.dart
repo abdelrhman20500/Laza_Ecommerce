@@ -16,7 +16,7 @@ class GridViewHomeProduct extends StatelessWidget {
         crossAxisCount: 2,
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 8.0,
-        childAspectRatio: 2.1 / 3.7,
+        childAspectRatio: 2.1/ 4.0,
       ),
       itemCount: model.length,
       itemBuilder: (context, index) {

@@ -14,6 +14,7 @@ class BuildHomeProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -31,15 +32,18 @@ class BuildHomeProduct extends StatelessWidget {
           children: [
             Stack(
               children: [
-                AspectRatio(
-                  aspectRatio: 1.1,
-                  child:CachedNetworkImage(
-                    imageUrl: "$baseUrl$image",
-                    fit: BoxFit.fill,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: AspectRatio(
+                    aspectRatio: 1.6/2,
+                    child:CachedNetworkImage(
+                      imageUrl: "$baseUrl$image",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Positioned(
-                  top: 2,right: 6,
+                  top: 2,right: 2,
                   child: IconButton(
                     onPressed: () {},
                     icon: const Icon(Icons.favorite_border,color: Colors.grey,size: 30,),
@@ -49,22 +53,30 @@ class BuildHomeProduct extends StatelessWidget {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
             Text(name,
-              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w500,),
-              maxLines: 3,
+              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w600,),
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.005,),
             Text(description,
-              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w500,),
-              maxLines: 3,
+              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w400,),
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-             Text("\$$price", style: const TextStyle(color:Colors.black,fontSize: 18,fontWeight: FontWeight.w600,),
-            ),
+            const Spacer(),
+            Row(
+              children: [
+                Text("\$$price", style: const TextStyle(color:Colors.black,fontSize: 18,fontWeight: FontWeight.w600,),),
+                const Spacer(),
+                const Text("(3.4)",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                const Icon(Icons.star, color: Colors.yellow,)
+              ],
+            )
           ],
         ),
       ),
     );
   }
 }
+

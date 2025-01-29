@@ -28,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Laza", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
         actions: [
           IconButton(onPressed: (){}, icon: const Icon(Icons.card_giftcard)),
         ],
