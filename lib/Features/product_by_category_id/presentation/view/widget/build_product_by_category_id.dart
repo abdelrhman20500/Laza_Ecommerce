@@ -1,8 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class BuildProductByCategoryId extends StatelessWidget {
-  const BuildProductByCategoryId({super.key});
+  const BuildProductByCategoryId({super.key, required this.image, required this.name, required this.description, required this.price});
 
+
+  final String image;
+  final String name;
+  final String description;
+  final String price;
   final String baseUrl = 'https://laza.runasp.net/';
 
   @override
@@ -29,10 +35,11 @@ class BuildProductByCategoryId extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: const AspectRatio(
+                  child: AspectRatio(
                     aspectRatio: 1.6/2,
-                    child:Image(image: AssetImage("assets/images/shirt.png"),
-                    fit: BoxFit.cover,)
+                    child:CachedNetworkImage(
+                      imageUrl: "$baseUrl$image",
+                      fit: BoxFit.cover,)
                   ),
                 ),
                 Positioned(
@@ -45,25 +52,25 @@ class BuildProductByCategoryId extends StatelessWidget {
               ],
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-            const Text("Nike Sportswear Club Fleece",
-              style: TextStyle(color:Colors.black,fontWeight: FontWeight.w600,),
+            Text(name,
+              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w600,),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.005,),
-            const Text("Nike Sportswear Club Fleece Nike Sportswear Club Fleece Nike Sportswear Club Fleece",
-              style: TextStyle(color:Colors.black,fontWeight: FontWeight.w400,),
+            Text(description,
+              style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w400,),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),
-            const Row(
+            Row(
               children: [
-                Text("\$200", style: TextStyle(color:Colors.black,fontSize: 18,fontWeight: FontWeight.w600,),),
-                Spacer(),
-                Text("(3.4)",
+                Text("\$$price", style: const TextStyle(color:Colors.black,fontSize: 18,fontWeight: FontWeight.w600,),),
+                const Spacer(),
+                const Text("(3.4)",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
-                Icon(Icons.star, color: Colors.yellow,)
+                const Icon(Icons.star, color: Colors.yellow,)
               ],
             )
           ],

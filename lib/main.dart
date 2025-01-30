@@ -44,10 +44,10 @@ class MyApp extends StatelessWidget {
         VerificationCodeScreen.routeName:(_)=>const VerificationCodeScreen(),
         NewPasswordScreen.routeName:(_)=> NewPasswordScreen(),
         HomeScreen.routeName:(_)=>const HomeScreen(),
-        ProductBuCategoryId.routeName:(_)=>const ProductBuCategoryId(),
+        // ProductByCategoryId.routeName:(_)=>const ProductByCategoryId(),
       },
-      initialRoute: ProductBuCategoryId.routeName,
-      // initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
+      // initialRoute: ProductBuCategoryId.routeName,
+      initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../product_by_category_id/presentation/view/product_by_category_id.dart';
 
 class BuildHomeCategory extends StatelessWidget {
   const BuildHomeCategory({super.key, required this.title, required this.image, required this.id,});
@@ -9,7 +10,10 @@ class BuildHomeCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>
+        ProductByCategoryId(categoryId: id,image: image,)));
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(

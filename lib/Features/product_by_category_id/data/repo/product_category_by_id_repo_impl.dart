@@ -8,7 +8,7 @@ import 'package:laza_e_commerce/Features/product_by_category_id/domain/repo/prod
 class ProductCategoryByIdRepoImpl extends ProductCategoryByIdRepo{
   final ProductByCategoryIdRemoteDataSource productByCategoryIdRemoteDataSource;
 
-  ProductCategoryByIdRepoImpl(this.productByCategoryIdRemoteDataSource);
+  ProductCategoryByIdRepoImpl({required this.productByCategoryIdRemoteDataSource});
   @override
   Future<Either<Failure, List<ProductEntity>>> getProductByCategoryId({required String categoryId})async{
     try {
