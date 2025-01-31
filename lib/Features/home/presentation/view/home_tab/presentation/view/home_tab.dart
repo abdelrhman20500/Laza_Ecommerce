@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view/widget/bloc_consumer_home_product.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view/widget/build_home_search.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view/widget/list_view_home_category.dart';
+import 'package:laza_e_commerce/Features/search/presentation/view/search_screen.dart';
 
 
 class HomeTab extends StatelessWidget {

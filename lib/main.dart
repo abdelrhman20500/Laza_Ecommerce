@@ -8,6 +8,7 @@ import 'package:laza_e_commerce/Features/login_screen/presentation/view/login_sc
 import 'package:laza_e_commerce/Features/login_social/presentation/view/login_social.dart';
 import 'package:laza_e_commerce/Features/new_password/presentation/view/new_password_screen.dart';
 import 'package:laza_e_commerce/Features/product_by_category_id/presentation/view/product_by_category_id.dart';
+import 'package:laza_e_commerce/Features/search/presentation/view/search_screen.dart';
 import 'package:laza_e_commerce/Features/sign_up_screen/presentation/view/sign_up_screen.dart';
 import 'package:laza_e_commerce/Features/verification_code/presentation/view/verification_code_screen.dart';
 import 'package:laza_e_commerce/Features/welcome_screen/presentation/view/welcome_screen.dart';
@@ -44,10 +45,11 @@ class MyApp extends StatelessWidget {
         VerificationCodeScreen.routeName:(_)=>const VerificationCodeScreen(),
         NewPasswordScreen.routeName:(_)=> NewPasswordScreen(),
         HomeScreen.routeName:(_)=>const HomeScreen(),
+        SearchScreen.routeName:(_)=>const SearchScreen(),
         // ProductByCategoryId.routeName:(_)=>const ProductByCategoryId(),
       },
-      // initialRoute: ProductBuCategoryId.routeName,
-      initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
+      initialRoute: SearchScreen.routeName,
+      // initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
     );
   }
 }

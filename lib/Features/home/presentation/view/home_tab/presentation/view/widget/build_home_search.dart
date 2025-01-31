@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../search/presentation/view/search_screen.dart';
+import '../../../../../../../search/presentation/view/widget/build_custom_search.dart';
 
 class BuildHomeSearch extends StatelessWidget {
-  const BuildHomeSearch({super.key,});
+  const BuildHomeSearch({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: TextFormField(
-            decoration: InputDecoration(
-              fillColor: Colors.grey.withOpacity(0.1),
-              filled: true,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: const BorderSide(color: Colors.grey),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
-                borderSide: const BorderSide(color: Colors.grey),
-              ),
-              labelText: "Search...",
-              prefixIcon: const Icon(Icons.search),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, SearchScreen.routeName);
+            },
+            child: const AbsorbPointer(
+              child: BuildCustomSearch(name: "Search .....",iconData: Icons.search,),
             ),
           ),
         ),
@@ -35,11 +29,11 @@ class BuildHomeSearch extends StatelessWidget {
           ),
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.keyboard_voice,
-                color: Colors.white, size: 32),
+            icon: const Icon(Icons.keyboard_voice, color: Colors.white, size: 32),
           ),
         ),
       ],
     );
   }
 }
+
