@@ -10,7 +10,7 @@ class SearchUseCase extends UseCase<List<ProductEntity>, String>{
 
   SearchUseCase(this.searchRepo);
   @override
-  Future<Either<Failure, List<ProductEntity>>> call([String? name]) async{
-    return await searchRepo.searchProduct(name: name!);
+  Future<Either<Failure, List<ProductEntity>>> call([String? query]) async{
+    return await searchRepo.searchProduct(query: query!);
   }
 }
