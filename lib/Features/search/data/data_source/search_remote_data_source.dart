@@ -1,10 +1,10 @@
 import 'package:laza_e_commerce/Core/functions/api_service.dart';
+import 'package:laza_e_commerce/Features/search/data/model/search_model.dart';
+import 'package:laza_e_commerce/Features/search/domain/entity/search_entity.dart';
 
-import '../../../home/presentation/view/home_tab/data/models/product_model.dart';
-import '../../../home/presentation/view/home_tab/domain/entities/product_entity.dart';
 
 abstract class SearchRemoteDataSource{
-  Future<List<ProductEntity>> searchFeaturedProduct({required String query});
+  Future<List<SearchEntity>> searchFeaturedProduct({required String query});
 }
 
 class SearchRemoteDataSourceImpl extends SearchRemoteDataSource{
@@ -12,18 +12,22 @@ class SearchRemoteDataSourceImpl extends SearchRemoteDataSource{
 
   SearchRemoteDataSourceImpl(this.apiService);
   @override
-  Future<List<ProductEntity>> searchFeaturedProduct({required String query})async{
-    var response = await apiService.get(endpoint: "https://laza.runasp.net/api/Product/Search?SearchTerm$query");
+  Future<List<SearchEntity>> searchFeaturedProduct({required String query})async{
+    var response = await apiService.get(endpoint:
+    "https://laza.runasp.net/api/Product/Search?SearchTerm=$query");
     List<dynamic> data = response; // Extract the data
-    List<ProductEntity> products = getProductsList(data);
+    List<SearchEntity> products = getProductsList(data);
+    print("#############################");
+    print(products);
     return products;
   }
   /// Method to convert API response to ProductEntity list
-  List<ProductEntity> getProductsList(List<dynamic> data) {
-    List<ProductEntity> products = [];
+  List<SearchEntity> getProductsList(List<dynamic> data) {
+    List<SearchEntity> products = [];
     for (var productMap in data) {
-      products.add(ProductModel.fromJson(productMap));
+      products.add(SearchModel.fromJson(productMap));
     }
     return products;
   }
 }
+

@@ -12,7 +12,7 @@ class BuildHomeSearch extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, SearchScreen.routeName);
+              showSearch(context: context, delegate: SearchScreen());
             },
             child: const AbsorbPointer(
               child: BuildCustomSearch(name: "Search .....",iconData: Icons.search,),

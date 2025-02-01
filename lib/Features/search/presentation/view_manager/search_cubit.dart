@@ -11,6 +11,7 @@ class SearchCubit extends Cubit<SearchState>{
     result.fold((failure) {
       emit(SearchFailure(failure.errMessage));
     }, (product) {
+      print(product);
       emit(SearchSuccess(product));
     });
   }
