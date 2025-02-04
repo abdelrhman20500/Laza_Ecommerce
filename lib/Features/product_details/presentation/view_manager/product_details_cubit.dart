@@ -2,9 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:laza_e_commerce/Features/product_details/domain/use_case/product_details_use_case.dart';
 import 'package:laza_e_commerce/Features/product_details/presentation/view_manager/product_details_state.dart';
 
-class ProductDetailsCubit extends Cubit<ProductDetailsState>{
-  ProductDetailsCubit(this.productDetailsUseCase) :super(ProductDetailsInitial());
+class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   final ProductDetailsUseCase productDetailsUseCase;
+
+  ProductDetailsCubit(this.productDetailsUseCase) : super(ProductDetailsInitial());
+
   Future<void> fetchProductDetails({required String productId}) async {
     emit(ProductDetailsLoading());
     var result = await productDetailsUseCase.call(productId);

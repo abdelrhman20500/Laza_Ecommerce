@@ -9,9 +9,9 @@ class ProductDetailsRepoImpl extends ProductDetailsRepo {
   final ProductDetailsRemoteDataSource productDetailsRemoteDataSource;
 
   ProductDetailsRepoImpl({required this.productDetailsRemoteDataSource});
+
   @override
-  Future<Either<Failure, List<ProductEntity>>> getProductDetailsRepo(
-      {required String productId}) async {
+  Future<Either<Failure, ProductEntity>> getProductDetailsRepo({required String productId}) async {
     try {
       var product = await productDetailsRemoteDataSource.fetchProductDetailsById(productId: productId);
       return right(product);

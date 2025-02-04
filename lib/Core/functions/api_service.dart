@@ -21,4 +21,8 @@ class ApiService{
     var response = await dio.get("$baseUrl$endpoint");
     return response.data;
   }
+  Future<Map<String, dynamic>> getDetails({required String endpoint ,String? token}) async {
+    var response = await dio.get("$baseUrl$endpoint");
+    return response.data;
+  }
 }

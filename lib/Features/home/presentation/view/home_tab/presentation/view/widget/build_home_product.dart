@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import '../../../../../../../product_details/presentation/view/widget/product_details_bloc_consumer.dart';
 
 class BuildHomeProduct extends StatelessWidget {
   const BuildHomeProduct({super.key, required this.image, required this.name, required this.description, required this.price, required this.id});
@@ -16,6 +17,8 @@ class BuildHomeProduct extends StatelessWidget {
     return InkWell(
       onTap: (){
         print(id);
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>
+        ProductDetailsBlocConsumer(productId: id,)));
       },
       child: Container(
         decoration: BoxDecoration(

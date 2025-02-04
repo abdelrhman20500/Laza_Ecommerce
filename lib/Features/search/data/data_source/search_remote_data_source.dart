@@ -17,8 +17,6 @@ class SearchRemoteDataSourceImpl extends SearchRemoteDataSource{
     "https://laza.runasp.net/api/Product/Search?SearchTerm=$query");
     List<dynamic> data = response; // Extract the data
     List<SearchEntity> products = getProductsList(data);
-    print("#############################");
-    print(products);
     return products;
   }
   /// Method to convert API response to ProductEntity list
