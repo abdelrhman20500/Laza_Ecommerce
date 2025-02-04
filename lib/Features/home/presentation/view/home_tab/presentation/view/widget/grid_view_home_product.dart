@@ -21,6 +21,7 @@ class GridViewHomeProduct extends StatelessWidget {
       itemCount: model.length,
       itemBuilder: (context, index) {
         return BuildHomeProduct(
+          id: model[index].id ?? "",
           image: model[index].image ?? "",
           name: model[index].name ?? "",
           description: model[index].description ?? "",
