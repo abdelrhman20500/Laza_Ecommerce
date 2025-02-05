@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:laza_e_commerce/Features/product_details/presentation/view/widget/review_card.dart';
 import 'package:laza_e_commerce/Features/product_details/presentation/view/widget/sized_selection.dart';
+import 'package:laza_e_commerce/Features/review/presentation/view/review_screen.dart';
 import '../../../sign_up_screen/presentation/view/widget/custom_button.dart';
 
 
@@ -65,8 +66,13 @@ class ProductDetailsScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(name, style: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black),),
+                    Expanded(
+                      child: Text(name,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black),),
+                    ),
                     Text("\$$price", style: const TextStyle(
                         fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black),),
                   ],
@@ -114,7 +120,10 @@ class ProductDetailsScreen extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: (){},
+                      onTap: ()
+                      {
+                        Navigator.pushNamed(context, ReviewScreen.routeName);
+                      },
                       child: const Text(
                         'View All',
                         style: TextStyle(
@@ -125,6 +134,8 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: height*0.02,),
+                const ReviewCard(),
                 SizedBox(height: height*0.02,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,12 +165,6 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: height*0.02,),
-                const ReviewCard(),
-                SizedBox(height: height*0.02,),
-                const Text("The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
-                  maxLines: 3,overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16, color: Colors.grey),),
                 SizedBox(height: height*0.02,),
                 CustomButton(text: "Add to Cart",
                     height: height*0.1,

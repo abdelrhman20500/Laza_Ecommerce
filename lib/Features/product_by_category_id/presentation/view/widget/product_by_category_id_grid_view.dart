@@ -11,7 +11,7 @@ class ProductByCategoryIdGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       physics: const AlwaysScrollableScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

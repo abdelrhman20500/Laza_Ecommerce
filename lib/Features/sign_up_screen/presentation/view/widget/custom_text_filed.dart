@@ -16,7 +16,6 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
 
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
