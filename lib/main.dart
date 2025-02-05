@@ -47,11 +47,12 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName:(_)=>const HomeScreen(),
         ReviewScreen.routeName:(_)=>const ReviewScreen(),
         AddReview.routeName:(_)=> AddReview(),
+
         // ProductDetailsScreen.routeName:(_)=>ProductDetailsScreen(),
         // SearchScreen.routeName:(_)=> SearchScreen(),
         // ProductByCategoryId.routeName:(_)=>const ProductByCategoryId(),
       },
-      initialRoute: AddReview.routeName,
+      initialRoute: ReviewScreen.routeName,
       // initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
     );
   }

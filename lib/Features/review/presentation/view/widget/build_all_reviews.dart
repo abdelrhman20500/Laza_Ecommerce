@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../product_details/presentation/view/widget/review_card.dart';
 
 class BuildAllReviews extends StatelessWidget {
-  const BuildAllReviews({
-    super.key,
-  });
+  const BuildAllReviews({super.key,});
+
 
   @override
   Widget build(BuildContext context) {
