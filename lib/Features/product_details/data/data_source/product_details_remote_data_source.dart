@@ -13,18 +13,7 @@ class ProductDetailsRemoteDataSourceImpl extends ProductDetailsRemoteDataSource 
 
   @override
   Future<ProductEntity> fetchProductDetailsById({required String productId}) async {
-    var response = await apiService.getDetails(endpoint: "/api/Product/GetProductBy/$productId");
-    print(response);
-    // Convert response to ProductEntity
+    var response = await apiService.getProductDetails(endpoint: "/api/Product/GetProductBy/$productId");
     return ProductModel.fromJson(response);
-  }
-
-  // Method to convert API response to ProductEntity list (if needed elsewhere)
-  List<ProductEntity> getProductsList(List<dynamic> data) {
-    List<ProductEntity> products = [];
-    for (var productMap in data) {
-      products.add(ProductModel.fromJson(productMap));
-    }
-    return products;
   }
 }

@@ -122,7 +122,8 @@ class ProductDetailsScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()
                       {
-                        Navigator.pushNamed(context, ReviewScreen.routeName);
+                        print("id => $id");
+                        Navigator.pushNamed(context, ReviewScreen.routeName,arguments: id);
                       },
                       child: const Text(
                         'View All',
@@ -135,7 +136,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: height*0.02,),
-                const ReviewCard(),
+                const ReviewCard(userName: "",feedback: "",rating:  2.2,),
                 SizedBox(height: height*0.02,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

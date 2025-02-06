@@ -6,20 +6,21 @@ import 'package:laza_e_commerce/Features/review/domain/entities/review_entity.da
 import 'package:laza_e_commerce/Features/review/domain/repo/all_review_repo.dart';
 
 class AllReviewsImpl extends AllReviewsRepo{
-  final AllREviewsRemoteDataSource allREviewsRemoteDataSource;
+  final AllReviewsRemoteDataSource allReviewsRemoteDataSource;
 
-  AllReviewsImpl({required this.allREviewsRemoteDataSource});
+  AllReviewsImpl({required this.allReviewsRemoteDataSource});
+
   @override
-  Future<Either<Failure, List<ReviewEntity>>> getAllReviews({required String token, required String productId})async{
+  Future<Either<Failure, List<ReviewEntity>>> getReviews(
+      {required String token, required String productId}) async {
     try {
-      var reviews= await allREviewsRemoteDataSource.fetchAllReviews(productId: productId);
+      var reviews =  await allReviewsRemoteDataSource.getReviews(productId: productId);
       return right(reviews);
-    }catch (e) {
+    } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
-      } else {
-        return left(ServerFailure(e.toString()));
       }
+      return left(ServerFailure(e.toString()));
     }
   }
 }

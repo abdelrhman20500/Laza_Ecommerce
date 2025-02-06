@@ -24,6 +24,7 @@ void main() async{
   Hive.registerAdapter(ProductEntityAdapter());
   await Hive.openBox<ProductEntity>(kFeaturedBox);
   Bloc.observer= SimpleBlocObserver();
+
   runApp(const MyApp());
 }
 
@@ -52,8 +53,8 @@ class MyApp extends StatelessWidget {
         // SearchScreen.routeName:(_)=> SearchScreen(),
         // ProductByCategoryId.routeName:(_)=>const ProductByCategoryId(),
       },
-      initialRoute: ReviewScreen.routeName,
-      // initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
+      // initialRoute: ReviewScreen.routeName,
+      initialRoute: SharedPref.getToken() == null ?SplashScreen.routeName : HomeScreen.routeName,
     );
   }
 }

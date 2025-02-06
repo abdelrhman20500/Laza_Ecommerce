@@ -8,10 +8,10 @@ import 'package:laza_e_commerce/Features/review/domain/repo/all_review_repo.dart
 class AllReviewsUseCase extends UseCase<List<ReviewEntity>, String>{
   final AllReviewsRepo allReviewsRepo;
 
-  AllReviewsUseCase(this.allReviewsRepo);
+  AllReviewsUseCase( this.allReviewsRepo);
   @override
   Future<Either<Failure, List<ReviewEntity>>> call([String? productId])async{
-    return await allReviewsRepo.getAllReviews(token: SharedPref.getToken().toString(), productId: productId!);
+    print(SharedPref.getToken());
+    return await allReviewsRepo.getReviews(token:SharedPref.getToken().toString(), productId: productId!);
   }
-
 }

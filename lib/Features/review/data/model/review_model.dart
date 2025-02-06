@@ -1,27 +1,26 @@
-import 'package:laza_e_commerce/Features/review/domain/entities/review_entity.dart';
+
+import '../../domain/entities/review_entity.dart';
 
 class ReviewModel extends ReviewEntity {
-  ReviewModel({
-    required String name,
-    required String feedback,
-    required double rating,
-  }) : super(name: name, feedback: feedback, rating: rating);
+  String username;
+  @override
+  String feedback;
+  @override
+  double rating;
 
-  factory ReviewModel.fromJson(Map<String, dynamic> json) {
-    return ReviewModel(
-      name: json["Username"] is String ? json["Username"] : '',
-      feedback: json["Feedback"] is String ? json["Feedback"] : '',
-      rating: json["Rating"] is num ? (json["Rating"] as num).toDouble() : 0.0,
-    );
-  }
+  ReviewModel(
+      {required this.username, required this.feedback, required this.rating})
+      : super(name: username, feedback: feedback, rating: rating);
 
-  // تحويل ReviewModel إلى JSON
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data["Username"] = name;
-    data["Feedback"] = feedback;
-    data["Rating"] = rating;
-    return data;
-  }
+  factory ReviewModel.fromJson(Map<String, dynamic> json) => ReviewModel(
+    username: json['Username'] as String,
+    feedback: json['Feedback'] as String,
+    rating: json['Rating'] as double,
+  );
+
+  Map<String, dynamic> toJson() => {
+    'Username': username,
+    'Feedback': feedback,
+    'Rating': rating,
+  };
 }
-

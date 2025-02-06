@@ -14,7 +14,7 @@ class ProductByCategoryIdRemoteDataSourceImpl extends ProductByCategoryIdRemoteD
   @override
   Future<List<ProductEntity>> fetchProductCategoryById({required String categoryId})async {
     var response = await apiService.get(endpoint: "/api/Product/GetProductsByCategoryId?categoryId$categoryId");
-    List<dynamic> data = response;
+    List<dynamic> data = response as List;
     List<ProductEntity> products = getCategoryIDProductsList(data);
     return products;
   }

@@ -15,7 +15,7 @@ class SearchRemoteDataSourceImpl extends SearchRemoteDataSource{
   Future<List<SearchEntity>> searchFeaturedProduct({required String query})async{
     var response = await apiService.get(endpoint:
     "https://laza.runasp.net/api/Product/Search?SearchTerm=$query");
-    List<dynamic> data = response; // Extract the data
+    List<dynamic> data = response as List; // Extract the data
     List<SearchEntity> products = getProductsList(data);
     return products;
   }

@@ -16,7 +16,6 @@ class BuildHomeProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        print(id);
         Navigator.push(context, MaterialPageRoute(builder: (context)=>
         ProductDetailsBlocConsumer(productId: id,)));
       },

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ReviewCard extends StatelessWidget {
-  const ReviewCard({super.key,});
+  const ReviewCard({super.key, required this.userName, required this.feedback, required this.rating,});
 
+  final String userName;
+  final String feedback;
+  final double rating;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -16,11 +19,11 @@ class ReviewCard extends StatelessWidget {
               backgroundColor: Colors.deepPurpleAccent,
             ),
             const SizedBox(width: 8),
-            const Column(
+             Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-              Text("Abdelrhman",style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-              Text('25 Nov, 2024', style: TextStyle(fontSize: 12, color: Colors.grey),),
+              Text(userName,style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+              const Text('25 Nov, 2024', style: TextStyle(fontSize: 12, color: Colors.grey),),
             ]),
             const Spacer(),
             Column(
@@ -28,14 +31,14 @@ class ReviewCard extends StatelessWidget {
               children: [
                 RichText(
                     textAlign: TextAlign.center,
-                    text: const TextSpan(children: [
+                    text:TextSpan(children: [
                       TextSpan(
-                          text: "4.8",
-                          style: TextStyle(
+                          text:rating.toString(),
+                          style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 15,
                               color: Colors.black)),
-                      TextSpan(
+                      const TextSpan(
                           text: 'rating',
                           style: TextStyle(
                             color: Colors.grey,
@@ -55,9 +58,9 @@ class ReviewCard extends StatelessWidget {
           ],
         ),
         SizedBox(height: height*0.02,),
-        const Text("The Nike Throwback Pullover Hoodie is made from premium French terry fabric that blends a performance feel with Read More..",
+        Text(feedback,
           maxLines: 3,overflow: TextOverflow.ellipsis,
-          style: TextStyle(fontSize: 16, color: Colors.grey),),
+          style: const TextStyle(fontSize: 16, color: Colors.grey),),
       ],
     );
   }

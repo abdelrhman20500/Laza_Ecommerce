@@ -25,7 +25,7 @@ class ProductRemoteDateSourceImpl extends ProductRemoteDateSource {
     // Fetch from API
     var response = await apiService.get(endpoint: "/api/Product/GetAllProducts");
 
-    List<dynamic> data = response; // Extract the data
+    List<dynamic> data = response as List; // Extract the data
     List<ProductEntity> products = getProductsList(data);
 
     // Cache Featured Product

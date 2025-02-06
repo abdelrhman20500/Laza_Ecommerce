@@ -5,24 +5,36 @@ class ApiService{
   final baseUrl = "https://laza.runasp.net";
 
   ApiService(this.dio);
-
-  Future<Response> post(String endPoint, Map<String, dynamic> data,{String? token}) async {
-    var response = await dio.post(endPoint,
-        data: data,
-        options: Options(headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $token',
-        }));
+  /// post method...
+  Future<Response> post(String endPoint, Map<String, dynamic> data, {String? token}) async {
+    var response = await dio.post(
+      "$baseUrl$endPoint",
+      data: data,
+      options: Options(headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      }),
+    );
     return response;
   }
 
-
-  Future<List<dynamic>> get({required String endpoint ,String? token}) async {
-    var response = await dio.get("$baseUrl$endpoint");
+ /// get method..
+  Future<Response> get({required String endpoint ,String? token}) async {
+    var response = await dio.get("$baseUrl$endpoint",
+        options:Options(headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        }));
+    print("Response Status: ${response.statusCode}");
+    print("Response Data: ${response.data}");
     return response.data;
   }
-  Future<Map<String, dynamic>> getDetails({required String endpoint ,String? token}) async {
+
+
+  /// get product details...
+  Future<Map<String, dynamic>> getProductDetails({required String endpoint ,String? token}) async {
     var response = await dio.get("$baseUrl$endpoint");
     return response.data;
   }
 }
+
