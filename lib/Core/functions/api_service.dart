@@ -19,8 +19,22 @@ class ApiService{
     return response;
   }
 
+  ///
+
+
  /// get method..
   Future<Response> get({required String endpoint ,String? token}) async {
+    var response = await dio.get("$baseUrl$endpoint",
+        options:Options(headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        }));
+    // print("Response Status: ${response.statusCode}");
+    // print("Response Data: ${response.data}");
+    return response.data;
+  }
+
+  Future<List<dynamic>> getFav({required String endpoint ,String? token}) async {
     var response = await dio.get("$baseUrl$endpoint",
         options:Options(headers: {
           'Content-Type': 'application/json',

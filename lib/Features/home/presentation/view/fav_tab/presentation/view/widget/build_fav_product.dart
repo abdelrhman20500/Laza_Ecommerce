@@ -1,12 +1,23 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class BuildFavProduct extends StatelessWidget {
-  const BuildFavProduct({super.key});
+import '../../../../../../../product_details/presentation/view/widget/product_details_bloc_consumer.dart';
 
+class BuildFavProduct extends StatelessWidget {
+  const BuildFavProduct({super.key, required this.image, required this.name,required this.price, required this.id});
+
+  final String image;
+  final String name;
+  final String price;
+  final String id;
+  final String baseUrl = 'https://laza.runasp.net/';
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>
+            ProductDetailsBlocConsumer(productId: id,)));
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
@@ -29,9 +40,12 @@ class BuildFavProduct extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: const AspectRatio(
+                    child: AspectRatio(
                       aspectRatio: 1.6/2,
-                      child:Image(image: AssetImage("assets/images/shirt.png"))
+                      child:CachedNetworkImage(
+                        imageUrl: "$baseUrl$image",
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -44,25 +58,19 @@ class BuildFavProduct extends StatelessWidget {
                 ],
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-              const Text("name",
-                style: TextStyle(color:Colors.black,fontWeight: FontWeight.w600,),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.005,),
-              const Text("description description description",
-                style: TextStyle(color:Colors.black,fontWeight: FontWeight.w400,),
+               Text(name,
+                style: const TextStyle(color:Colors.black,fontWeight: FontWeight.w600,),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
               const Spacer(),
-              const Row(
+              Row(
                 children: [
-                  Text("\$200 EGP", style: TextStyle(color:Colors.black,fontSize: 18,fontWeight: FontWeight.w600,),),
-                  Spacer(),
-                  Text("(3.4)",
+                  Text("\$$price", style: const TextStyle(color:Colors.black,fontSize: 18,fontWeight: FontWeight.w600,),),
+                  const Spacer(),
+                  const Text("(3.4)",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
-                  Icon(Icons.star, color: Colors.yellow,)
+                  const Icon(Icons.star, color: Colors.yellow,)
                 ],
               )
             ],
