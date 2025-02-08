@@ -57,7 +57,7 @@ class ReviewScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, AddReview.routeName);
+                    Navigator.pushNamed(context, AddReview.routeName, arguments: productId);
                   },
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.06,
@@ -91,8 +91,6 @@ class ReviewScreen extends StatelessWidget {
               child: BlocBuilder<AllReviewsCubit, AllReviewsState>(
                 builder: (context, state) {
                   if (state is AllReviewsSuccess) {
-                    // print(state.reviews.length);
-                    // print(state.reviews);
                     return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,

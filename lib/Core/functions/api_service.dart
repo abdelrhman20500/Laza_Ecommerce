@@ -15,6 +15,7 @@ class ApiService{
         'Authorization': 'Bearer $token',
       }),
     );
+
     return response;
   }
 
@@ -25,8 +26,8 @@ class ApiService{
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         }));
-    print("Response Status: ${response.statusCode}");
-    print("Response Data: ${response.data}");
+    // print("Response Status: ${response.statusCode}");
+    // print("Response Data: ${response.data}");
     return response.data;
   }
 

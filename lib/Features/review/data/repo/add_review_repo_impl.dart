@@ -6,7 +6,7 @@ import 'package:laza_e_commerce/Features/review/domain/entities/review_entity.da
 import 'package:laza_e_commerce/Features/review/domain/repo/add_review_repo.dart';
 
 class AddReviewRepoImpl extends AddReviewRepo{
-  final AddReviewRemoteDateSource addReviewRemoteDateSource;
+  final AddReviewRemoteDataSource addReviewRemoteDateSource;
 
   AddReviewRepoImpl({required this.addReviewRemoteDateSource});
   @override
@@ -18,6 +18,7 @@ class AddReviewRepoImpl extends AddReviewRepo{
       return right(reviews);
     } catch (e) {
       if (e is DioException) {
+        print("DioException: ${e.response?.data}");
         return left(ServerFailure.fromDioError(e));
       }
       return left(ServerFailure(e.toString()));

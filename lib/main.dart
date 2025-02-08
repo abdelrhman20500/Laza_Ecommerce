@@ -24,7 +24,6 @@ void main() async{
   Hive.registerAdapter(ProductEntityAdapter());
   await Hive.openBox<ProductEntity>(kFeaturedBox);
   Bloc.observer= SimpleBlocObserver();
-
   runApp(const MyApp());
 }
 

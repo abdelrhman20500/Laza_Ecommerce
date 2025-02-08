@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/fav_tab/widget/grid_view_fav_product.dart';
 
 class FavTab extends StatelessWidget {
   const FavTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.cyan,);
+    return const Column(
+      children: [
+        GridViewFavProduct()
+      ],
+    );
   }
 }

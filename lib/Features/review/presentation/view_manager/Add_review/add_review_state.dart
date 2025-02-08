@@ -1,14 +1,19 @@
+import '../../../data/model/add_review_model.dart';
 
+abstract class AddReviewState {}
 
-abstract class AddReviewState{}
-class AddReviewInitial extends AddReviewState{}
-class AddReviewLoading extends AddReviewState{}
+class AddReviewInitial extends AddReviewState {}
 
+class AddReviewLoading extends AddReviewState {}
 
-class AddReviewSuccess extends AddReviewState{
+class AddReviewSuccess extends AddReviewState {
+  final AddReviewModel review;
+
+  AddReviewSuccess(this.review);
 }
-class AddReviewFailure extends AddReviewState{
+
+class AddReviewFailure extends AddReviewState {
   final String errMessage;
 
-  AddReviewFailure(this.errMessage);
+  AddReviewFailure({required this.errMessage});
 }
