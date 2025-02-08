@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laza_e_commerce/Features/home/presentation/view/fav_tab/widget/build_fav_product.dart';
+import 'build_fav_product.dart';
 
 class GridViewFavProduct extends StatelessWidget {
   const GridViewFavProduct({super.key});
