@@ -8,6 +8,10 @@ import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/data/re
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/domain/use_cases/product_use_case.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view_manager/product_cubit.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/home_tab/presentation/view_manager/product_state.dart';
+import '../../../data/data_sources/add_fav_remote_data_source.dart';
+import '../../../data/repos/add_fav_repo_impl.dart';
+import '../../../domain/use_cases/add_fav_use_case.dart';
+import '../../view_manager/add_fav_cubit/add_fav_cubit.dart';
 import 'grid_view_home_product.dart';
 
 class BlocConsumerHomeProduct extends StatelessWidget {
@@ -15,15 +19,19 @@ class BlocConsumerHomeProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => FeaturedProductsCubit(
-        ProductUseCase(
-          ProductRepoImpl(
-            productRemoteDateSource: ProductRemoteDateSourceImpl(ApiService(Dio())),
-            productLocalDataSource: ProductLocalDataSourceImpl(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => FeaturedProductsCubit(
+          ProductUseCase(
+            ProductRepoImpl(
+              productRemoteDateSource: ProductRemoteDateSourceImpl(ApiService(Dio())),
+              productLocalDataSource: ProductLocalDataSourceImpl(),
+            ),
           ),
-        ),
-      )..fetchFeaturedProducts(),
+        )..fetchFeaturedProducts(),),
+        BlocProvider(create: (context) => AddFavCubit(AddFavUseCase(AddFavRepoImpl(
+          addFavRemoteDataSource: AddFavRemoteDataSourceImpl(ApiService(Dio(),),),),),),)
+      ],
       child: BlocBuilder<FeaturedProductsCubit, ProductState>(
         builder: (context, state) {
           if (state is ProductFailure) {

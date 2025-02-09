@@ -17,7 +17,7 @@ class GridViewFavProduct extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 8.0,
           mainAxisSpacing: 8.0,
-          childAspectRatio: 2.5/ 4.0,
+          childAspectRatio: 2.4/ 4.0,
         ),
         itemCount: model.length,
         itemBuilder: (context, index) {

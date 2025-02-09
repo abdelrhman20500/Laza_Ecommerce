@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:laza_e_commerce/Features/home/presentation/view/fav_tab/domain/repo/get_fav_repo.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../../../Core/utils/failure.dart';
 import '../../../home_tab/domain/entities/product_entity.dart';
