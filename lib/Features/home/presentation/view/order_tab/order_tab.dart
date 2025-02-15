@@ -5,6 +5,16 @@ class OrderTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.lightGreenAccent,);
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.hourglass_empty,size: 54,),
+          Text('There is no orders now!',
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22),
+          ),
+        ],
+      ),
+    );
   }
 }
