@@ -18,9 +18,18 @@ class ApiService{
 
     return response;
   }
-
-  ///
-
+ ///  https://laza.runasp.net/api/Cart/AddToCart
+  /// delete method
+  Future<Response> delete(String endPoint, Map<String, dynamic> data,
+      {String? token}) async {
+    var response = await dio.delete(endPoint,
+        data: data,
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        }));
+    return response;
+  }
 
  /// get method..
   Future<Response> get({required String endpoint ,String? token}) async {

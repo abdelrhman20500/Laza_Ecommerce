@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../product_details/presentation/view/widget/product_details_bloc_consumer.dart';
+import 'build_fav_icon.dart';
 
 class BuildFavProduct extends StatelessWidget {
   const BuildFavProduct({super.key, required this.image, required this.name,required this.price, required this.id});
@@ -48,13 +49,7 @@ class BuildFavProduct extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 2,right: 2,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.favorite_border,color: Colors.grey,size: 30,),
-                    ),
-                  ),
+                  const BuildFavIcon(),
                 ],
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
@@ -80,3 +75,4 @@ class BuildFavProduct extends StatelessWidget {
     );
   }
 }
+

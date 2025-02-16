@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laza_e_commerce/Features/home/presentation/view/cart_tab/presentation/view_manager/add_cart_cubit.dart';
 import 'package:laza_e_commerce/Features/product_details/presentation/view/widget/review_card.dart';
 import 'package:laza_e_commerce/Features/product_details/presentation/view/widget/sized_selection.dart';
 import 'package:laza_e_commerce/Features/review/presentation/view/review_screen.dart';
@@ -171,7 +173,9 @@ class ProductDetailsScreen extends StatelessWidget {
                     height: height*0.1,
                     width: double.infinity,
                     color: const Color(0xff9775FA),
-                    onPressed: (){}
+                    onPressed: (){
+                    BlocProvider.of<AddCartCubit>(context).addCart(productId: id);
+                    }
                 ),
               ],
             ),
