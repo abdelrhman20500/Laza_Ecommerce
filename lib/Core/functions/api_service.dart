@@ -54,6 +54,17 @@ class ApiService{
     return response.data;
   }
 
+/// getCart
+  Future<Map<String, dynamic>> getCart({required String endpoint ,String? token}) async {
+    var response = await dio.get("$baseUrl$endpoint",
+        options:Options(headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        }));
+    // print("Response Status: ${response.statusCode}");
+    // print("Response Data: ${response.data}");
+    return response.data;
+  }
 
   /// get product details...
   Future<Map<String, dynamic>> getProductDetails({required String endpoint ,String? token}) async {
